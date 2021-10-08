@@ -1,5 +1,7 @@
 package policy;
 
+import com.zeeeu.houseutils.exception.ErrorCode;
+import com.zeeeu.houseutils.exception.HouseUtilsException;
 import constants.ActionType;
 
 public class BrokeragePolicyFactory {
@@ -11,8 +13,9 @@ public class BrokeragePolicyFactory {
             case PURCHASE:
                 return new PurchaseBrokeragePolicy();
             default:
-                throw new IllegalArgumentException("There is not have any actionType.");
+                throw new HouseUtilsException(ErrorCode.INVALID_REQUEST,
+                        "There is not have any actionType.");
         }
     }
-    
+
 }
